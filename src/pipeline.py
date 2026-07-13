@@ -5,10 +5,16 @@ import requests
 import time
 from dotenv import load_dotenv
 
+os.makedirs('logs',exist_ok=True)
 logging.basicConfig(
     level=logging.INFO,
-    format="%(asctime)s - %(levelname)s - %(message)s"
+    format="%(asctime)s - %(levelname)s - %(message)s",
+    handlers=[
+        logging.FileHandler("logs/pipeline.log"),
+        logging.StreamHandler()
+    ]
 )
+logging.info("Pipeline started Successfully")
 
 def load_env_configurations():
     """Extract environment variables safely from memory storage with container directory mapping."""
@@ -61,11 +67,17 @@ def execute_paginated_pipeline():
             logging.info(f"Successfully extracted {len(raw_data)} elements from page {current_page}.")
 
             for item in raw_data:
+                required_keys = ['id', 'userId', 'title'] 
+
+                if not all(key in item for key in required_keys):
+                    logging.warning(f"Skipping record {item.get('id', 'unknown')}: Missing mandatory fields.")
+                    continue
+
                 cleaned_row = clean_and_normalize_posts(item)
                 all_extracted_records.append(cleaned_row)
         
             current_page += 1
-            time.sleep(0.5)  # Defensive throttling backoff rate safety gap
+            time.sleep(0.5)
 
         except requests.exceptions.RequestException as connection_error:
             logging.error(f"Network connectivity dropout error encountered: {connection_error}")
