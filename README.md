@@ -10,7 +10,6 @@
 
 ## 🏗️ Architecture
 ![Pipeline Architecture](assets/architecture.png)
-*(Insert your diagram image here)*
 
 ---
 
@@ -22,7 +21,7 @@
 
 ### 1. Project Directory Layout
 Ensure your workspace matches this professional repository skeleton layout before compilation:
-```text
+
 core-data-ingestion/
 ├── logs/
 │   └── pipeline.log             # Generated dynamically by the logger
