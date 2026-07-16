@@ -1,0 +1,14 @@
+2026-07-16 03:51:57,439 - INFO - Pipeline started Successfully
+2026-07-16 03:51:57,439 - INFO - Initiating Production Pagination Ingestion Engine...
+2026-07-16 03:51:57,440 - INFO - Extracting data from page: 1 | Records per page limit: 5
+2026-07-16 03:51:58,464 - INFO - Successfully extracted 5 elements from page 1.
+2026-07-16 03:51:58,965 - INFO - Extracting data from page: 2 | Records per page limit: 5
+2026-07-16 03:51:59,895 - INFO - Successfully extracted 5 elements from page 2.
+2026-07-16 03:52:00,395 - INFO - Extracting data from page: 3 | Records per page limit: 5
+2026-07-16 03:52:01,211 - INFO - Successfully extracted 5 elements from page 3.
+2026-07-16 03:52:01,712 - INFO - Extracting data from page: 4 | Records per page limit: 5
+2026-07-16 03:52:02,586 - INFO - Successfully extracted 5 elements from page 4.
+2026-07-16 03:52:03,086 - INFO - Pagination processing completed. Total rows aggregated: 20
+2026-07-16 03:52:03,086 - INFO - Initializing connection network handshake with AWS S3...
+2026-07-16 03:52:03,243 - INFO - Uploading metrics directly to S3 bucket: de-bronze-api-ingestion-naresh...
+2026-07-16 03:52:03,667 - INFO - 🚀 SUCCESS: Data engine states uploaded safely to: s3://de-bronze-api-ingestion-naresh/raw/year=2026/month=07/day=14/extracted_transactions.json

@@ -36,7 +36,6 @@ core-data-ingestion/
 ### 2. Configure Environment Variables
 Create a localized variable file within your absolute project path root:
 ```sh
-Bash
 touch .env
 Open .env using your text editor and append your targeted API and cloud infrastructure keys:
 
@@ -54,20 +53,18 @@ Note: Your .env and logs/ parameters are hardcoded within .gitignore to avoid pu
 ### 3. Build the Portable Container Engine
 Compile your pipeline environment matrix into an immutable, portable Docker image layer:
 ```sh
-Bash
 docker build -t core-data-ingestion-engine .
 ```
 ### 4. Deploy and Initialize the Pipeline Runtime
 Launch your data ingestion engine wrapper, mounting your environmental runtime variables straight into the container environment stack:
 ```sh
-Bash
 docker run --env-file .env core-data-ingestion-engine
 📊 Observability & Monitoring
 Pipeline performance, connection benchmarks, and skipped row counts are streamed concurrently to both your stdout console terminal layout and a structured local execution tracking file. Inspect the health state of your environment at any point using this trace command:
 ```
 ```sh
-Bash
 cat logs/pipeline.log
+```
 🗃️ Ingested Target Schema Structure
 Data lands inside your specified cloud S3 bucket as an immutable historical tracking record (Bronze Quality Data Layer). The unstructured dictionary attributes are parsed down into a clean, normalized, ready-to-load JSON layout structure:
 ```
